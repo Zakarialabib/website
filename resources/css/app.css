@@ -1,0 +1,741 @@
+@import "@fortawesome/fontawesome-free/css/fontawesome";
+@import "@fortawesome/fontawesome-free/css/brands";
+@import "@fortawesome/fontawesome-free/css/regular";
+@import "@fortawesome/fontawesome-free/css/solid";
+@import 'cropperjs/dist/cropper.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+:root {
+--primary: rgba(255, 255, 255, 1%);
+--secondary: #cbd5e1;
+}
+
+* {
+scrollbar-width: thin;
+scrollbar-color: var(--secondary) var(--primary);
+}
+
+*::-webkit-scrollbar {
+width: 3px;
+height: 3px
+}
+
+*::-webkit-scrollbar-track {
+background: var(--primary);
+border-radius: 3px;
+}
+
+*::-webkit-scrollbar-thumb {
+background-color: var(--secondary);
+border-radius: 11px;
+border: 3px solid var(--primary);
+}
+
+body {
+font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+    
+.pre-font {
+font-family: 'Inconsolata', 'Source Code Pro', monospace !important;
+}
+
+nav a {
+@apply text-red-100 hover:text-black;
+}
+
+.dot {
+@apply border border-gray-300 inline-block h-2 w-2 rounded-full mr-2 rtl:ml-2;
+}
+
+.active .dot {
+@apply border border-indigo-400 bg-indigo-400;
+}
+
+.active a {
+@apply text-indigo-500;
+}
+
+pre {
+@apply rounded-xl bg-gray-700  mt-4 mb-7 py-4;
+}
+
+h2 {
+@apply font-light text-2xl text-gray-200 ;
+}
+
+h3 {
+@apply text-xl mb-4 font-semibold leading-7 text-white ;
+}
+
+h4,
+h5,
+h6 {
+@apply font-semibold block;
+}
+
+p {
+@apply text-[15px] leading-8 py-2;
+}
+
+ul {
+@apply list-disc pl-6;
+}
+
+ul li {
+@apply text-[15px] leading-8;
+}
+
+
+code {
+@apply !pre-font text-[15px] leading-6;
+}
+
+code.inline {
+@apply bg-gray-800/80 text-gray-100 text-sm px-2 py-1 rounded-lg mb-1 inline-block  ;
+}
+
+.navigation a {
+@apply border-t border-gray-300 pt-4 block w-full pl-6 ;
+}
+
+.navigation div.dot {
+@apply hidden;
+}
+
+.navigation h5 {
+@apply pl-6;
+}
+
+.copy-to-clipboard-button {
+@apply px-3 py-1.5 hover:text-white text-white block bg-gray-700;
+}
+
+div.code-toolbar>.toolbar {
+@apply right-2 top-2 opacity-100;
+}
+
+:not(pre)>code[class*=language-],
+pre[class*=language-] {
+@apply bg-gray-800 rounded-xl  ;
+}
+
+pre[class*="language-"].line-numbers {
+@apply pl-14;
+}
+
+.token.tag {
+@apply text-red-100;
+}
+
+.token.attr-name {
+@apply text-gray-100;
+}
+
+.token.literal-property {
+@apply text-red-100;
+}
+
+.token.attr-value,
+.token.punctuation {
+@apply text-teal-500;
+}
+
+.line-numbers-rows>span::before {
+@apply text-gray-500;
+}
+
+.line-numbers .line-numbers-rows {
+@apply border-r border-gray-700;
+}
+
+.line-highlight {
+@apply bg-gradient-to-r from-gray-700/30 to-gray-800 border-t border-b border-gray-700/50/20 mt-3.5;
+}
+
+.toggle-checkbox:checked {
+@apply right-0 border-green-300;
+}
+
+.toggle-checkbox:checked+.toggle-label {
+@apply bg-green-400;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+@apply hidden;
+}
+
+}
+
+.select2-container {
+/* The container where the selectbox is housing*/
+@apply relative box-border align-middle inline-block m-0 mb-2;
+}
+
+.select2-container .select2-selection--single {
+/* Selection box itself */
+@apply box-border cursor-pointer block select-none shadow border rounded;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+/* DIV inside Selection box with text, clear button and arrow down*/
+@apply block h-6 pl-1 pr-6 truncate;
+}
+
+.select2-container .select2-selection--single .select2-selection__clear {
+/* The DIV where the X is housing to clear the chosen option */
+@apply relative -m-1;
+}
+
+.select2-container[dir="rtl"] .select2-selection--single .select2-selection__rendered {
+@apply pl-6 pr-1;
+}
+
+.select2-container .select2-selection--multiple {
+@apply box-border overflow-hidden h-4 cursor-pointer block select-none;
+}
+
+.select2-container .select2-selection--multiple .select2-selection__rendered {
+@apply inline-block pl-2 truncate whitespace-nowrap;
+}
+
+.select2-container .select2-search--inline {
+/* Search box*/
+@apply float-left;
+}
+
+.select2-container .select2-search--inline .select2-search__field {
+@apply box-border border  pl-1 my-1 w-full text-base;
+}
+
+.select2-container .select2-search--inline .select2-search__field::-webkit-search-cancel-button {
+@apply appearance-none;
+}
+
+.select2-dropdown {
+/* Dropdown area after the arrow down is clicked */
+@apply absolute block w-auto box-border bg-white  border-solid border border-gray-200 z-50 float-left;
+}
+
+.select2-results {
+@apply block text-black;
+}
+
+.select2-results__options {
+@apply list-none m-0 p-0;
+}
+
+.select2-results__option {
+/* The rows with results that you see after dropdown.
+Increase p-1 to p-2 to have more space between results */
+@apply p-1 select-none;
+}
+
+.select2-results__option[aria-selected] {
+@apply cursor-pointer;
+}
+
+.select2-container--open .select2-dropdown {
+/* Dropdown container opened and results are shown*/
+@apply mt-3 left-0;
+}
+
+.select2-container--open .select2-dropdown--above {
+/* The left and right borders of the option rows */
+@apply rounded border-gray-400  shadow;
+}
+
+.select2-container--open .select2-dropdown--below {
+/* The left and right borders of the option rows */
+@apply rounded border-gray-400  shadow;
+}
+
+.select2-search--dropdown {
+/* Search dropdown element*/
+@apply block p-2;
+}
+
+.select2-search--dropdown .select2-search__field {
+/* Search box itself where you can enter text*/
+@apply h-10 p-1 bg-white  box-border rounded border-2 border-blue-300   outline-none;
+width: 100%;
+}
+
+.select2-search--dropdown .select2-search__field::-webkit-search-cancel-button {
+@apply appearance-none;
+}
+
+.select2-search--dropdown.select2-search--hide {
+@apply hidden;
+}
+
+.select2-close-mask {
+@apply block w-12 min-w-full m-0 p-0;
+border: 0;
+position: fixed;
+left: 0;
+top: 0;
+min-height: 100%;
+height: auto;
+width: auto;
+opacity: 0;
+z-index: 99;
+background-color: #fff;
+filter: alpha(opacity=0);
+}
+
+.select2-hidden-accessible {
+border: 0 !important;
+clip: rect(0 0 0 0) !important;
+-webkit-clip-path: inset(50%) !important;
+clip-path: inset(50%) !important;
+height: 1px !important;
+overflow: hidden !important;
+padding: 0 !important;
+position: absolute !important;
+width: 1px !important;
+white-space: nowrap !important;
+}
+
+.select2-container--default .select2-selection--single {
+/* Selection bar - Self */
+@apply p-2 h-10 bg-white  border border-solid ;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+/* Selection bar - Text color of the item you selected from the results */
+@apply text-gray-700 ;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__clear {
+/* Selection bar - Clear button - If this property is enabled*/
+@apply cursor-pointer float-right text-red-700;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__placeholder {
+/* Selection bar - Color of the placeholder text before selection - If this property is enabled */
+@apply text-gray-600 ;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+/* Selection bar - DIV where the arrow pointing down is living*/
+@apply absolute right-0 top-0 h-10 w-8;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+/* Arrow is a CSS triangle that does not exists in Tailwind without a package */
+@apply absolute border-solid h-0 w-0 border-t-4 border-r-4 border-b-0 border-l-4;
+border-color: #000 transparent transparent transparent;
+left: 50%;
+margin-left: -4px;
+margin-top: -2px;
+top: 50%;
+}
+
+.select2-container--default[dir="rtl"] .select2-selection--single .select2-selection__clear {
+/* Selection bar - Clear button - If this property is enabled from right to left*/
+@apply float-left ml-4;
+}
+
+.select2-container--default[dir="rtl"] .select2-selection--single .select2-selection__arrow {
+/* Placement of the dropdown arrow when in rtl mode */
+@apply left-0 right-auto;
+}
+
+.select2-container--default.select2-container--disabled .select2-selection--single {
+/* Selection by property disabled*/
+@apply cursor-default bg-gray-300;
+}
+
+.select2-container--default.select2-container--disabled .select2-selection--single .select2-selection__clear {
+/* Selection bar - Hide the clear cross when selection bar is disabled*/
+@apply hidden;
+}
+
+.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+border-color: transparent transparent #888 transparent;
+border-width: 0 4px 5px 4px;
+}
+
+.select2-container--default .select2-selection--multiple {
+@apply p-1 min-h-full h-full border border-solid  rounded shadow bg-white ;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__rendered {
+@apply box-border list-none m-0 px-1 min-w-full;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__rendered li {
+@apply list-none;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__clear {
+@apply float-right cursor-pointer mt-1 mr-2 p-1;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+@apply bg-white  text-gray-700  border cursor-default rounded my-1 mr-1 px-2 float-left;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+@apply text-gray-700  cursor-pointer inline-block mr-1;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+@apply text-gray-700 ;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+@apply border-2 outline-none;
+}
+
+.select2-container--default.select2-container--disabled .select2-selection__choice__remove {
+@apply hidden;
+}
+
+.select2-container--classic .select2-selection--multiple .select2-selection__choice {
+@apply bg-gray-300 border-2  shadow rounded float-left cursor-default mt-1 mr-1 px-1;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field {
+/* The border of the search textbox */
+@apply border-solid;
+}
+
+.select2-container--default .select2-search--inline .select2-search__field {
+/* Search textbox */
+@apply border-none bg-transparent outline-none shadow-none select-text;
+}
+
+.select2-container--default .select2-results>.select2-results__options {
+/* Hight of the dropdown zone where the options or results are visible */
+@apply h-full max-h-32 overflow-y-auto;
+}
+
+.select2-container--default .select2-results__option[role=group] {
+/* No clue what this does */
+@apply p-0;
+}
+
+.select2-container--default .select2-results__option[aria-disabled=true] {
+@apply text-gray-700;
+}
+
+.select2-container--default .select2-results__option[aria-selected=true] {
+/* The already selected option row color */
+@apply bg-gray-300 ;
+}
+
+.select2-results__option--selected {
+@apply hidden;
+}
+
+.select2-container--default .select2-results__option .select2-results__option {
+padding-left: 1em;
+}
+
+.select2-container--default .select2-results__option .select2-results__option .select2-results__group {
+padding-left: 0;
+}
+
+.select2-container--default .select2-results__option .select2-results__option .select2-results__option {
+margin-left: -1em;
+padding-left: 2em;
+}
+
+.select2-container--default .select2-results__option .select2-results__option .select2-results__option .select2-results__option {
+margin-left: -2em;
+padding-left: 3em;
+}
+
+.select2-container--default .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option {
+margin-left: -3em;
+padding-left: 4em;
+}
+
+.select2-container--default .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option {
+margin-left: -4em;
+padding-left: 5em;
+}
+
+.select2-container--default .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option {
+margin-left: -5em;
+padding-left: 6em;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+/* Background color and text color of the options rows when select is open */
+@apply bg-gray-100  text-gray-700 ;
+}
+
+.select2-container--default .select2-results__group {
+/* Have no idea what this is for */
+@apply cursor-default block;
+padding: 6px;
+}
+
+.no-scrollbar {
+-ms-overflow-style: none;
+scrollbar-width: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+-moz-appearance: textfield;
+}
+
+code[class*=language-],
+pre[class*=language-] {
+color: #f8f8f2;
+background: rgba(0, 0, 0, 0.479);
+text-shadow: 0 1px rgba(0, 0, 0, .3);
+font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+font-size: 1em;
+text-align: left;
+white-space: pre;
+word-spacing: normal;
+word-break: normal;
+word-wrap: normal;
+line-height: 1.5;
+-moz-tab-size: 4;
+-o-tab-size: 4;
+tab-size: 4;
+-webkit-hyphens: none;
+-moz-hyphens: none;
+-ms-hyphens: none;
+hyphens: none
+}
+
+pre[class*=language-] {
+padding: 1em;
+margin: .5em 0;
+overflow: auto;
+border-radius: .3em
+}
+
+:not(pre)>code[class*=language-] {
+padding: .1em;
+border-radius: .3em;
+white-space: normal
+}
+
+pre[data-line] {
+position: relative;
+padding: 1em 0 1em 3em
+}
+
+.line-highlight {
+position: absolute;
+left: 0;
+right: 0;
+padding: inherit 0;
+margin-top: 1em;
+background: hsla(24, 20%, 50%, .08);
+background: linear-gradient(to right, hsla(24, 20%, 50%, .1) 70%, hsla(24, 20%, 50%, 0));
+pointer-events: none;
+line-height: inherit;
+white-space: pre
+}
+
+@media print {
+.line-highlight {
+-webkit-print-color-adjust: exact;
+color-adjust: exact
+}
+}
+
+.line-highlight:before,
+.line-highlight[data-end]:after {
+content: attr(data-start);
+position: absolute;
+top: .4em;
+left: .6em;
+min-width: 1em;
+padding: 0 .5em;
+background-color: hsla(24, 20%, 50%, .4);
+color: #f4f1ef;
+font: bold 65%/1.5 sans-serif;
+text-align: center;
+vertical-align: .3em;
+border-radius: 999px;
+text-shadow: none;
+box-shadow: 0 1px #fff
+}
+
+.line-highlight[data-end]:after {
+content: attr(data-end);
+top: auto;
+bottom: .4em
+}
+
+.line-numbers .line-highlight:after,
+.line-numbers .line-highlight:before {
+content: none
+}
+
+pre[id].linkable-line-numbers span.line-numbers-rows {
+pointer-events: all
+}
+
+pre[id].linkable-line-numbers span.line-numbers-rows>span:before {
+cursor: pointer
+}
+
+pre[id].linkable-line-numbers span.line-numbers-rows>span:hover:before {
+background-color: rgba(128, 128, 128, .2)
+}
+
+pre[class*=language-].line-numbers {
+position: relative;
+padding-left: 3.8em;
+counter-reset: linenumber
+}
+
+pre[class*=language-].line-numbers>code {
+position: relative;
+white-space: inherit
+}
+
+.line-numbers .line-numbers-rows {
+position: absolute;
+pointer-events: none;
+top: -2px;
+font-size: 100%;
+left: -3.8em;
+width: 3em;
+letter-spacing: -1px;
+border-right: 1px solid #999;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none
+}
+
+.line-numbers-rows>span {
+display: block;
+counter-increment: linenumber
+}
+
+.line-numbers-rows>span:before {
+content: counter(linenumber);
+color: #999;
+display: block;
+padding-right: .8em;
+text-align: right
+}
+
+.command-line-prompt {
+border-right: 1px solid #999;
+display: block;
+float: left;
+font-size: 100%;
+letter-spacing: -1px;
+margin-right: 1em;
+pointer-events: none;
+text-align: right;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none
+}
+
+.command-line-prompt>span:before {
+opacity: .7;
+content: ' ';
+display: block;
+padding-right: .8em
+}
+
+.command-line-prompt>span[data-user]:before {
+content: "[" attr(data-user) "@" attr(data-host) "] $"
+}
+
+.command-line-prompt>span[data-user=root]:before {
+content: "[" attr(data-user) "@" attr(data-host) "] #"
+}
+
+.command-line-prompt>span[data-prompt]:before {
+content: attr(data-prompt)
+}
+
+.command-line-prompt>span[data-continuation-prompt]:before {
+content: attr(data-continuation-prompt)
+}
+
+.command-line span.token.output {
+opacity: .7
+}
+
+div.code-toolbar {
+position: relative
+}
+
+div.code-toolbar>.toolbar {
+position: absolute;
+z-index: 10;
+top: .3em;
+right: .2em;
+transition: opacity .3s ease-in-out;
+opacity: 0
+}
+
+div.code-toolbar:hover>.toolbar {
+opacity: 1
+}
+
+div.code-toolbar:focus-within>.toolbar {
+opacity: 1
+}
+
+div.code-toolbar>.toolbar>.toolbar-item {
+display: inline-block
+}
+
+div.code-toolbar>.toolbar>.toolbar-item>a {
+cursor: pointer
+}
+
+div.code-toolbar>.toolbar>.toolbar-item>button {
+background: 0 0;
+border: 0;
+color: inherit;
+font: inherit;
+line-height: normal;
+overflow: visible;
+padding: 0;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none
+}
+
+div.code-toolbar>.toolbar>.toolbar-item>a,
+div.code-toolbar>.toolbar>.toolbar-item>button,
+div.code-toolbar>.toolbar>.toolbar-item>span {
+color: #bbb;
+font-size: .8em;
+padding: 0 .5em;
+background: #f5f2f0;
+background: rgba(224, 224, 224, .2);
+box-shadow: 0 2px 0 0 rgba(0, 0, 0, .2);
+border-radius: .5em
+}
+
+div.code-toolbar>.toolbar>.toolbar-item>a:focus,
+div.code-toolbar>.toolbar>.toolbar-item>a:hover,
+div.code-toolbar>.toolbar>.toolbar-item>button:focus,
+div.code-toolbar>.toolbar>.toolbar-item>button:hover,
+div.code-toolbar>.toolbar>.toolbar-item>span:focus,
+div.code-toolbar>.toolbar>.toolbar-item>span:hover {
+color: inherit;
+text-decoration: none
+}
