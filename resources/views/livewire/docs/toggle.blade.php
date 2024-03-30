@@ -39,41 +39,6 @@ layout('layouts.guest');
         </code>
     </pre>
 
-    <p>
-        The toggle component by default is displayed as an inline-flex element to enable you sit multiple toggles side by side.
-        If you prefer your toggles to fill up their parent containers and be justified with the label, set <code class="inline text-red-500">justified="true"</code>.
-    </p>
-    <p><x-toggle label="Send me quarterly newsletters" justified="true" /></p>
-    <pre class="language-markup line-numbers" data-line="3">
-        <code>
-            &lt;x-toggle
-                label="Send me quarterly newsletters"
-                justified="true"  /&gt;
-        </code>
-    </pre>
-
-    <h2 id="thin-thicker-bar">Thin and Thicker Bars</h2>
-    <p>
-        The toggle component can have a thinner bar like is seen on most Android devices and thicker bar as seen on iOS.
-        Set <code class="inline text-red-500">bar="thin"</code> or <code class="inline text-red-500">bar="thicker"</code>. The default bar is set at <code class="inline text-red-500">bar="thick"</code>.
-    </p>
-    <p><x-toggle label="Send me quarterly newsletters" bar="thin" /></p>
-    <pre class="language-markup line-numbers" data-line="3">
-        <code>
-            &lt;x-toggle
-                label="Send me quarterly newsletters"
-                bar="thin"  /&gt;
-        </code>
-    </pre>
-    <p><x-toggle label="Send me quarterly newsletters" bar="thicker" /></p>
-    <pre class="language-markup line-numbers" data-line="3">
-        <code>
-            &lt;x-toggle
-                label="Send me quarterly newsletters"
-                bar="thicker"  /&gt;
-        </code>
-    </pre>
-
     <h2 id="checked">Checked and Disabled</h2>
     <p>
         The toggle component can be checked and/or disabled by default. To check the component set <code class="inline text-red-500">checked="true"</code>. To mark the toggle as disabled, set <code class="inline text-red-500">disabled="true"</code>.
@@ -134,8 +99,13 @@ layout('layouts.guest');
             <th>Available Values</th>
         </x-slot>
         <tr>
+            <td>id</td>
+            <td></td>
+            <td>Unique id to identify the component.</td>
+        </tr>
+        <tr>
             <td>name</td>
-            <td>bw-toggle</td>
+            <td></td>
             <td>Unique name to identify the component and access its value when submitted.</td>
         </tr>
         <tr>
@@ -166,19 +136,9 @@ layout('layouts.guest');
                 <code class="inline">cyan</code> <code class="inline">purple</code> <code class="inline">gray</code> <code class="inline">orange</code></td>
         </tr>
         <tr>
-            <td>justified</td>
-            <td>false</td>
-            <td>Specifies if the label and toggle are spread out to evenly fill up the parent container. <br /><code class="inline">true</code> <code class="inline">false</code></td>
-        </tr>
-        <tr>
-            <td>bar</td>
-            <td>thick</td>
-            <td>Specifies the size for the slider bar. <br /><code class="inline">thin</code> <code class="inline">thick</code> <code class="inline">thicker</code></td>
-        </tr>
-        <tr>
-            <td>onclick</td>
-            <td>javascript:void(0)</td>
-            <td>Javascript function to call when the toggle is clicked. This is fired both when the toggle is checked or not. You will need to programmatically determine if the toggle is checked or not.</td>
+            <td>direction</td>
+            <td>row</td>
+            <td>Specifies the direction of the flex container. <br /><code class="inline">row</code> <code class="inline">column</code></td>
         </tr>
     </x-table>
 
@@ -186,34 +146,22 @@ layout('layouts.guest');
     <pre class="language-markup line-numbers">
         <code>
             &lt;x-toggle
-                color="purple"
+                id="toggle1"
+                name="subscribe"
                 label="Send me quarterly newsletters"
                 label_position="right"
-                name="subscribe"
-                justified="false"
                 disabled="false"
-                bar="thin"
                 checked="false"
-                onclick="alert('hey there')" /&gt;
+                color="purple"
+                direction="row"
+                wire:model="toggleValue" /&gt;
         </code>
     </pre>
 
-    <x-alert closeIcon="false">
-        The source file for this component is available in <code class="inline">resources > views > components > bladewind > toggle.blade.php</code>
-    </x-alert>
-    <p>&nbsp;</p>
-
     <x-slot:side_nav>
-        <div class="flex items-center"><div class="dot"></div><a href="#thin-thicker-bar">Thin & thicker bars</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#checked">Checked and disbled</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#colours">Different colours</a></div>
         <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full list of attributes</a></div>
     </x-slot:side_nav>
-
-    <x-slot name="scripts">
-        <script>
-            selectNavigationItem('.component-toggle');
-        </script>
-    </x-slot>
 
 </div>

@@ -10,6 +10,7 @@ Volt::route('component/badge',                 'docs.badge');
 Volt::route('component/breadcrumb',                 'docs.breadcrumb');
 Volt::route('component/button',                 'docs.button');
 Volt::route('component/card',                   'docs.card');
+Volt::route('component/carousel',                   'docs.carousel');
 Volt::route('component/checkbox',               'docs.checkbox');
 Volt::route('component/datepicker',             'docs.datepicker');
 Volt::route('component/dropdown',               'docs.dropdown');
@@ -24,8 +25,6 @@ Volt::route('component/tabs',                    'docs.tabs');
 Volt::route('component/table',                  'docs.table');
 Volt::route('component/textarea',               'docs.textarea');
 Volt::route('component/toggle',                 'docs.toggle');
-Volt::route('component/tooltip',                'docs.tooltip');
-Volt::route('component/verification-code',      'docs.verification_code');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
