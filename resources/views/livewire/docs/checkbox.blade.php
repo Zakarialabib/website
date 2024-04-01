@@ -191,14 +191,14 @@ layout('layouts.guest');
         </code>
     </pre>
 
-    <x-slot:side_nav>
+    <x-slot:sideNavigation>
         <div class="flex items-center">
             <div class="dot"></div><a href="#coloured">Coloured Checkboxes</a>
         </div>
         <div class="flex items-center">
             <div class="dot"></div><a href="#attributes">Full list of attributes</a>
         </div>
-    </x-slot:side_nav>
+    </x-slot:sideNavigation>
 
     <x-slot name="scripts">
         <script>

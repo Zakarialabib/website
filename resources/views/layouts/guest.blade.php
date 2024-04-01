@@ -114,7 +114,7 @@
                             class="sm:pl-8 sm:rtl:pr-8 sm:fixed sm:h-screen sm:overflow-y-scroll -mt-6  border-gray-200 dark:border-gray-800">
                             <h5 class="mb-3 my-7 font-semibold text-gray-500/80 dark:text-gray-200">Sections</h5>
                             <div class="space-y-2">
-                                {{ $side_nav ?? '' }}
+                                {{ $sideNavigation ?? '' }}
                             </div>
                         </nav>
                     </div>

@@ -916,7 +916,7 @@ layout('layouts.guest');
         <code class="inline">resources > views > components > bladewind > modal-icons.blade.php</code>
     </x-alert>
 
-    <x-slot:side_nav>
+    <x-slot:sideNavigation>
         <div class="flex items-center">
             <div class="dot"></div><a href="#default">Default modal</a>
         </div>
@@ -938,7 +938,7 @@ layout('layouts.guest');
         <div class="flex items-center">
             <div class="dot"></div><a href="#attributes">Full list of attributes</a>
         </div>
-    </x-slot:side_nav>
+    </x-slot:sideNavigation>
 
     <x-slot name="scripts">
         <script>

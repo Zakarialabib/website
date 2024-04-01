@@ -284,7 +284,7 @@ $countries = computed(function () {
         </code>
     </pre>
 
-    <x-slot:side_nav>
+    <x-slot:sideNavigation>
         <div class="flex items-center">
             <div class="dot"></div><a href="#basic">Basic dropdown</a>
         </div>
@@ -294,7 +294,7 @@ $countries = computed(function () {
         <div class="flex items-center">
             <div class="dot"></div><a href="#attributes">Full list of attributes</a>
         </div>
-    </x-slot:side_nav>
+    </x-slot:sideNavigation>
     <x-slot name="scripts">
         <script>
             selectNavigationItem('.component-dropdown');

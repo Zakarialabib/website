@@ -882,7 +882,7 @@ layout('layouts.guest');
     </x-alert>
     <p>&nbsp;</p>
 
-    <x-slot:side_nav>
+    <x-slot:sideNavigation>
         <div class="flex items-center">
             <div class="dot"></div><a href="#password">Password Input</a>
         </div>
@@ -910,7 +910,7 @@ layout('layouts.guest');
         <div class="flex items-center">
             <div class="dot"></div><a href="#attributes">Full list of attributes</a>
         </div>
-    </x-slot:side_nav>
+    </x-slot:sideNavigation>
 
     <x-slot name="scripts">
         <script>
