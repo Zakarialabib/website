@@ -1,30 +1,21 @@
-
 @props(['value' => ''])
 
-<div
-    x-data="{ content: @entangle($attributes->wire('model')) }"
-    x-on:text-change="content = $event.detail.content"
-    x-init="initQuill($refs.editor, $dispatch)"
-    class="mt-1"
->
+<div x-data="{ content: @entangle($attributes->wire('model')) }" x-on:text-change="content = $event.detail.content" x-init="initQuill($refs.editor, $dispatch)" class="mt-1">
     <div wire:ignore>
         <div x-ref="editor">{!! $value !!}</div>
     </div>
 </div>
 
 
-////// version 
+////// version
 
 @php
-    $id = uniqid()
+    $id = uniqid();
 @endphp
 
-<div 
-    class="rounded-md shadow-sm"
-    x-data="{ data: @entangle($attributes->wire('model')) }"
-    x-init="
-        quill{{$id}} = new Quill($refs.editor, {  modules: {
-    toolbar: ['bold', 'italic', 'underline'],
+<div class="rounded-md shadow-sm" x-data="{ data: @entangle($attributes->wire('model')) }" x-init="quill{{ $id }} = new Quill($refs.editor, {
+    modules: {
+        toolbar: ['bold', 'italic', 'underline'],
         ['blockquote'],
         [{ 'header': 2 }],
         [{ 'list': 'ordered' }, { 'list': 'bullet' }],
@@ -35,15 +26,14 @@
             // 'video'
         ],
         ['clean']
-  },theme: 'snow'});
-        delta = quill{{$id}}.clipboard.convert(data)
-        quill{{$id}}.setContents(delta, 'silent')
-        quill{{$id}}.on('text-change', function () {
-            data = quill{{$id}}.root.innerHTML;
-        });
-    "
-    wire:ignore
->
+    },
+    theme: 'snow'
+});
+delta = quill{{ $id }}.clipboard.convert(data)
+quill{{ $id }}.setContents(delta, 'silent')
+quill{{ $id }}.on('text-change', function() {
+    data = quill{{ $id }}.root.innerHTML;
+});" wire:ignore>
     <div x-ref="editor"></div>
 </div>
 
@@ -69,7 +59,6 @@
 
 @push('styles')
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    
 @endpush
 
 @push('scripts')

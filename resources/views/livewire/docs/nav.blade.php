@@ -56,12 +56,9 @@
             
             <div class="flex items-center border border-gray-200 dark:border-gray-700">
                 <div class="dot"></div><a class="text-gray-900 dark:text-gray-100" wire:navigate
-                    href="/component/icon">Icon</a>
-            </div>
-            <div class="flex items-center border border-gray-200 dark:border-gray-700">
-                <div class="dot"></div><a class="text-gray-900 dark:text-gray-100" wire:navigate
                     href="/component/input">Input</a>
             </div>
+            
             <div class="flex items-center border border-gray-200 dark:border-gray-700">
                 <div class="dot"></div><a class="text-gray-900 dark:text-gray-100" wire:navigate
                     href="/component/spinner">Loading spinner</a>

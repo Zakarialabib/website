@@ -1,7 +1,5 @@
 @props(['wide', 'bgColor', 'padded','slot'])
 
-
-<!-- resources/views/components/layout.blade.php -->
 <div {{ $attributes->merge(['class' => ' w-full container mx-auto ' ]) }}>
     @if ($wide)
         <div {{ $attributes->merge(['class' => $wide ? 'w-full' : 'max-w-screen-xl mx-auto']) }}>

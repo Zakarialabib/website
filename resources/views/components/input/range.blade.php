@@ -2,22 +2,22 @@
 
 <div class="price-input">
     <div class="field">
-      <span>Min</span>
-      <input type="number" class="input-min" value="{{ $minPrice }}">
+        <span>Min</span>
+        <input type="number" class="input-min" value="{{ $minPrice }}">
     </div>
     <div class="separator">-</div>
     <div class="field">
-      <span>Max</span>
-      <input type="number" class="input-max" value="{{ $maxPrice }}">>
+        <span>Max</span>
+        <input type="number" class="input-max" value="{{ $maxPrice }}">>
     </div>
-  </div>
-  <div class="slider">
+</div>
+<div class="slider">
     <div class="progress"></div>
-  </div>
-  <div class="range-input">
+</div>
+<div class="range-input">
     <input type="range" class="range-min" min="0" max="10000" value="{{ $minPrice }}" step="100">
     <input type="range" class="range-max" min="0" max="10000" value="{{ $maxPrice }}" step="100">
-  </div>
+</div>
 </div>
 
 @push('scripts')
