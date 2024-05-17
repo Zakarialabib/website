@@ -1,6 +1,10 @@
-# ZakariaLabib
+#  Portfolio, Blog and Demo of Blade Components for your next Livewire Project 
 
-ZakariaLabib is a library of reusable components for the Laravel framework. This project aims to provide solutions to common questions and functionalities that arise when working with Laravel. This is the first release, and while there's still a lot of work to be done, we're excited to share some components that have been used in several projects.
+- Portfolio of my work
+
+- Blog with content published 
+
+- BComponents is a library of reusable components for the Laravel framework. This project aims to provide solutions to common questions and functionalities that arise when working with Laravel. This is the first release, and while there's still a lot of work to be done, we're excited to share some components that have been used in several projects.
 
 Check out the live demo at [zakarialabib.com](http://zakarialabib.com).
 
@@ -30,4 +34,4 @@ npm run build
 As an open-source project, we encourage participation and contribution. Feel free to fork the project, make your changes, and submit a pull request. We appreciate any and all contributions, whether it's a typo, bug fix, or new feature.
 
 ## Future Plans
-The project is still in its early stages, but we hope to make a positive impact on the Laravel community. We encourage all Laravel developers to use, learn, and suggest improvements to ZakariaLabib.
+The project is still in its early stages, but we hope to make a positive impact on the Laravel community. We encourage all Laravel developers to use, learn, and suggest improvements to BComponents.
