@@ -1,3 +1,4 @@
+
 @props(['size' => '10', 'color' => 'green', 'icon' => 'fas fa-arrow-up', 'position' => 'right', 'url' => '#top'])
 
 <div class="fixed z-[100] bottom-10 {{ $position }}-10 flex justify-center items-center">

@@ -2,8 +2,23 @@
 
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
+use App\Livewire\Front\Articles\Browse as BrowseArticles;
+use App\Livewire\Front\Articles\Create as CreateArticle;
+use App\Livewire\Front\Articles\Edit as EditArticle;
+use App\Livewire\Front\Articles\Show as ShowArticle;
+use App\Livewire\Front\DynamicPage;
 
-Volt::route('/',                                'docs.index');
+require __DIR__.'/auth.php';
+
+// Articles
+Route::get('/articles', BrowseArticles::class)->name('articles');
+Route::get('article/create', CreateArticle::class)->name('article.create');
+Route::get('article/{article}', ShowArticle::class)->name('articles.show');
+Route::get('article/{article}/edit', EditArticle::class)->name('articles.edit');
+
+Route::get('/{slug?}', DynamicPage::class)->name('front.dynamicPage');
+
+Volt::route('/component/home',                                'docs.index');
 Volt::route('component/alert',                  'docs.alert');
 Volt::route('component/accordion',                  'docs.accordion');
 Volt::route('component/badge',                 'docs.badge');
@@ -34,4 +49,7 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-require __DIR__.'/auth.php';
+
+Livewire::setUpdateRoute(function ($handle) {
+    return Route::post('/livewire/update', $handle);
+});

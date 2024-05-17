@@ -1,5 +1,5 @@
 <nav class="hidden md:flex gap-10 justify-end w-full" x-data="{ isDropdownOpen: false }">
-    @foreach (Helpers::getHeaderMenu() as $index => $item)
+    @foreach (getHeaderMenu() as $index => $item)
         @if ($item->type === 'link')
             <a href="{{ $item->url }}" @if ($item->new_window) target="__blank" @endif
                 class="text-base font-bold text-red-950 hover:text-red-400 dark:hover:text-red-900 hover:underline focus:underline uppercase">

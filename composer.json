@@ -6,10 +6,14 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "graham-campbell/markdown": "^15.2",
         "laravel/framework": "^11.0",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.4",
         "livewire/volt": "^1.0",
+        "spatie/laravel-medialibrary": "^11.4",
+        "spatie/laravel-permission": "^6.4",
+        "spatie/laravel-sitemap": "^7.2",
         "voku/stop-words": "^2.0",
         "wamania/php-stemmer": "^3.0"
     },
@@ -28,7 +32,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/Services/Helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

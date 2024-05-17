@@ -7,11 +7,12 @@ import {
 
 import Prism from './prism';
 
+import editorjs from './editor';
+
 import Cropper from 'cropperjs';
 window.Cropper = Cropper;
 
 import mask from '@alpinejs/mask'
-
 Alpine.plugin(mask)
 
 Alpine.data("mainTheme", () => {
