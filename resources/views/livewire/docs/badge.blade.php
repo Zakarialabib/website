@@ -118,7 +118,32 @@ layout('layouts.guest');
                     Next Chapter
                 &lt;/x-badge&gt;
             </code>
-        </pre>
+    </pre>
+
+    <h2 id="icons">Badges with tooltip</h2>
+
+    <p>
+        Badges can be enhanced with tooltip. Simply specify the title in the <code class="inline">title</code>
+        attribute.
+    </p>
+
+    <div class="text-center space-x-4">
+        <x-badge color="info" icon="angle-right" icon_position="right" title="Next Chapter">Next
+            Chapter</x-badge>
+    </div>
+
+    <pre class="language-markup line-numbers">
+            <code>
+                &lt;x-badge
+                    color="secondary"
+                    icon="arrow-small-right"
+                    icon_position="right"
+                    title="Next Chapter"&gt;
+                    Next Chapter
+                &lt;/x-badge&gt;
+            </code>
+    </pre>
+
 
     <h2 id="attributes">Full List Of Attributes</h2>
     <p>The table below shows a comprehensive list of all the attributes available for the Badge component.</p>
@@ -134,11 +159,12 @@ layout('layouts.guest');
                 <x-table.td>color</x-table.td>
                 <x-table.td>primary</x-table.td>
                 <x-table.td>Set the colour of the badge. The default is picked from what has been defined as the
-                    primary colour in your tailwind.config.js file. Bcomponents sets the default to blue. <br /><br><br /> 
+                    primary colour in your tailwind.config.js file. Bcomponents sets the default to blue.
+                    <br /><br><br />
                     <code class="inline">primary</code> <code class="inline">info</code>
                     <code class="inline">secondary</code>
                     <code class="inline">danger</code>
-                    <code class="inline">warning</code> 
+                    <code class="inline">warning</code>
                     <code class="inline">black</code>
                     <code class="inline">primaryOutline</code>
                     <code class="inline">infoOutline</code>
@@ -172,6 +198,14 @@ layout('layouts.guest');
                     is not blank. <br><br /> <code class="inline">true</code> <code class="inline">false</code>
                 </x-table.td>
             </x-table.tr>
+            <x-table.tr>
+                <x-table.td>title</x-table.td>
+                <x-table.td>null</x-table.td>
+                <x-table.td>
+                    If set, the badge will have a tooltip. The value of the attribute is the text that will be
+                    displayed in the tooltip.
+                </x-table.td>
+            </x-table.tr>
         </x-table.tbody>
     </x-table-responsive>
 
@@ -194,7 +228,7 @@ layout('layouts.guest');
         <div class="flex items-center">
             <div class="dot"></div><a href="#secondary">Colored badge</a>
         </div>
-        
+
         <div class="flex items-center">
             <div class="dot"></div><a href="#icons">With icons</a>
         </div>
