@@ -1,6 +1,10 @@
-# BComponents
+#  Portfolio, Blog and Demo of Blade Components for your next Livewire Project 
 
-BComponents is a library of reusable components for the Laravel framework. This project aims to provide solutions to common questions and functionalities that arise when working with Laravel. This is the first release, and while there's still a lot of work to be done, we're excited to share some components that have been used in several projects.
+- Portfolio of my work
+
+- Blog with content published 
+
+- BComponents is a library of reusable components for the Laravel framework. This project aims to provide solutions to common questions and functionalities that arise when working with Laravel. This is the first release, and while there's still a lot of work to be done, we're excited to share some components that have been used in several projects.
 
 Check out the live demo at [zakarialabib.com](http://zakarialabib.com).
 
