@@ -4,6 +4,7 @@
     'icon' => null,
     'icon_position' => 'left',
     'iconClasses' => null,
+    'title' => null,
 ])
 
 @php
@@ -42,26 +43,39 @@
 
     $iconClasses = $icon_position === 'right' ? 'ml-2' : 'mr-2';
 @endphp
-@if ($href)
-    <a href="{{ $href }}"
-        class="inline-flex items-center  justify-center px-4 py-2 transition ease-in-out duration-150 rounded-full disabled:opacity-25 {{ $classes }}">
-        @if ($icon && $icon_position === 'left')
-            <i class="fa fa-{{ $icon }} {{ $iconClasses }}"></i>
-        @endif
-        {{ $slot }}
-        @if ($icon && $icon_position === 'right')
-            <i class="fa fa-{{ $icon }} {{ $iconClasses }}"></i>
-        @endif
-    </a>
-@else
-    <span
-        class="inline-flex items-center px-4 py-2 transition ease-in-out duration-150 rounded-full disabled:opacity-25 justify-center {{ $classes }}">
-        @if ($icon && $icon_position === 'left')
-            <i class="fa fa-{{ $icon }} {{ $iconClasses ?? 'ml-2' }}"></i>
-        @endif
-        {{ $slot }}
-        @if ($icon && $icon_position === 'right')
-            <i class="fa fa-{{ $icon }} {{ $iconClasses ?? 'ml-2' }}"></i>
-        @endif
-    </span>
-@endif
+<div @if ($title) x-data="{ showTooltip: false }" @mouseenter="showTooltip = true" @mouseleave="showTooltip = false" @endif>
+    @if ($href)
+        <a href="{{ $href }}"
+            class="inline-flex items-center  justify-center px-4 py-2 transition ease-in-out duration-150 rounded-full disabled:opacity-25 {{ $classes }}">
+            @if ($icon && $icon_position === 'left')
+                <i class="fa fa-{{ $icon }} {{ $iconClasses }}"></i>
+            @endif
+            {{ $slot }}
+            @if ($icon && $icon_position === 'right')
+                <i class="fa fa-{{ $icon }} {{ $iconClasses }}"></i>
+            @endif
+        </a>
+    @else
+        <span
+            class="inline-flex items-center px-4 py-2 transition ease-in-out duration-150 rounded-full disabled:opacity-25 justify-center {{ $classes }}">
+            @if ($icon && $icon_position === 'left')
+                <i class="fa fa-{{ $icon }} {{ $iconClasses ?? 'ml-2' }}"></i>
+            @endif
+            {{ $slot }}
+            @if ($icon && $icon_position === 'right')
+                <i class="fa fa-{{ $icon }} {{ $iconClasses ?? 'ml-2' }}"></i>
+            @endif
+        </span>
+    @endif
+    @if ($title)
+        <div x-show="showTooltip"
+            class="absolute z-10 w-32 p-2 -mt-12 text-sm leading-tight text-black transition-opacity bg-white rounded shadow-lg opacity-75 left-1/2 transform -translate-x-1/2"
+            x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 transform scale-90"
+            x-transition:enter-end="opacity-100 transform scale-100"
+            x-transition:leave="transition ease-in duration-200"
+            x-transition:leave-start="opacity-100 transform scale-100"
+            x-transition:leave-end="opacity-0 transform scale-90">
+            {{ $title }}
+        </div>
+    @endif
+</div>
